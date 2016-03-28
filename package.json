@@ -1,0 +1,26 @@
+{
+  "name": "wechat-terminal",
+  "version": "0.0.1",
+  "desciption": "wechat client for terminal",
+  "main": "lib/cms_wx_manager.js",
+  "directories": {
+    "lib": "./lib",
+    "bin": "./bin"
+  },
+  "author": "Ethan Zhang <unpeeled_onion@outlook.com> (http://lightthewoods.me)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "request": ">=2.69.0",
+    "qrcode-terminal": "https://github.com/gtanner/qrcode-terminal.git",
+    "xmldom": ">=0.1.22",
+    "xpath": ">=0.0.22"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.0",
+    "request": ">=2.69.0",
+    "qrcode-terminal": "https://github.com/gtanner/qrcode-terminal.git",
+    "xpath": ">=0.0.22",
+    "xmldom": ">=0.1.22"
+  }
+}
