@@ -10,6 +10,7 @@
   "author": "Ethan Zhang <unpeeled_onion@outlook.com> (http://lightthewoods.me)",
   "license": "Apache-2.0",
   "dependencies": {
+    "log4js": "^0.6.35",
     "minimist": "^1.2.0",
     "qrcode-terminal": "https://github.com/gtanner/qrcode-terminal.git",
     "request": ">=2.69.0",
