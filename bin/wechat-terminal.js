@@ -1,5 +1,5 @@
-var WxClient = require('../lib/wx_client.js');
+const WxClient = require('../lib/wx_client.js');
 
-wxClient = new WxClient();
+const wxClient = new WxClient();
 
 wxClient.run();
