@@ -12,23 +12,28 @@ server.listen(8124, () => {
 });
 
 function exitHandler(options, exitCode) {
+  logger.debug(options.source);
   if (options.cleanup) {
     server.cleanup();
     logger.info('clean');
   }
-  if (exitCode || exitCode === 0) logger.info(exitCode);
-  if (options.exit) process.exit();
+  if (exitCode !== undefined) logger.info(exitCode);
+  if (options.exit) {
+    process.exit();
+  }
 }
 
 //do something when app is closing
-process.on('exit', exitHandler.bind(null, {cleanup: true, exit: true}));
+process.on('exit', exitHandler.bind(null, {cleanup: true, exit: false, source: 'exit'}));
 
 //catches ctrl+c event
-process.on('SIGINT', exitHandler.bind(null, {cleanup: true, exit: true}));
+process.on('SIGINT', exitHandler.bind(null, {exit: true, source: 'SIGINT'}));
+
+process.on('SIGUSR1', exitHandler.bind(null, {exit: true, source: 'SIGUSR1'}));
+process.on('SIGUSR2', exitHandler.bind(null, {exit: true, source: 'SIGUSR2'}));
 
 // catches "kill pid" (for example: nodemon restart)
-process.on('SIGUSR1', exitHandler.bind(null, {cleanup: true, exit: true}));
-process.on('SIGUSR2', exitHandler.bind(null, {cleanup: true, exit: true}));
+process.on('SIGTERM', exitHandler.bind(null, {exit: true, source: 'SIGTERM'}));
 
 //catches uncaught exceptions
-process.on('uncaughtException', exitHandler.bind(null, {cleanup: true, exit: true}));
+process.on('uncaughtException', exitHandler.bind(null, {exit: true, source: 'uncaughtException'}));
